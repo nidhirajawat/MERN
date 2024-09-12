@@ -394,6 +394,79 @@
     .counter{
       font-size: 42px;
     }
+    /* Why-Choose-Us */
+    .why h5{
+      display: inline-block;
+    line-height: 28px;
+    border-radius: 15px;
+    background: rgba(145, 59, 255, 0.07);
+    padding: 0 18px;
+    /* font-size: 12px; */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--prime-three);
+    /* margin-bottom: 20px; */
+    font-weight: bold;
+    color: #ff2c00;
+}
+    .why p{
+      line-height: 1.7rem;
+      font-size: 20px;
+    }
+    .why h1{
+      font-size: 40px;
+      letter-spacing: -1px;
+      margin: 0;
+    }
+    .why-section{
+      display: flex;
+      justify-content: space-around;
+    }
+    .images-section1{
+      position: relative !important;
+      display: inline-block;
+    }
+    .imag2{
+      top: 25%;
+    left: 3%;
+    width: 9.71%;
+    animation: jumpTwo 4s infinite linear;
+    position: absolute;
+    z-index: -1;
+    }
+    .imag3{
+      top: 16%;
+    right: 7%;
+    width: 11.73%;
+    animation: jumpThree 4s infinite linear;
+    position: absolute;
+    z-index: -1;
+    }
+    .imag4{
+      top: 13%;
+    left: 20.5%;
+    width: 14.63%;
+    z-index: 1;
+    opacity: 1;
+    transform: translate(0);
+    position: absolute;
+}
+    .imag5{
+      bottom: 5.5%;
+    left: 2.8%;
+    width: 32.3%;
+    opacity: 1;
+    transform: translate(0);
+    position: absolute;
+    }
+    .imag6{
+      bottom: 11.9%;
+    right: 16.5%;
+    width: 11.61%;
+    animation: jumpTwo 4s infinite linear;
+    position: absolute;
+    z-index: -1;
+    }
 
     /* FOOTER */
     .app-footer {
@@ -724,6 +797,27 @@
         </div>
       </div>
     </section>
+
+    <!-- Why-choose-us -->
+     <section class="choose-us">
+      <div class="container">
+        <div class="why-section">
+          <div class="why">
+            <h5>WHY CHOOSE US</h5>
+            <h1>Why Choose Us?</h1>
+            <p>Our vast experience allows us to provide quality and reliability to our clients. We design solutions that are tailored to your specific needs. With Precious Infosystem, you will be guided through the entire process of planning, web development, completion, and maintenance.</p>
+          </div>
+          <div class="images-section1">
+            <img src="./assest/ils_06.svg" alt="" class="imag1">
+            <img src="./assest/ils_06_1.svg" alt="" class="imag2">
+            <img src="./assest/ils_06_2.svg" alt="" class="imag3">
+            <img src="./assest/ils_06_3.svg" alt="" class="imag4">
+            <img src="./assest/ils_06_4.svg" alt="" class="imag5">
+            <img src="./assest/ils_06_5.svg" alt="" class="imag6">
+          </div>
+        </div>
+      </div>
+     </section>
 
     <!-- Contact Section Start -->
     <section id="contact-section" class="contact-section">
