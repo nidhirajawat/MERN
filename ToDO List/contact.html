@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!-- html - HTML 5th Version -->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Home Page | Contact Form</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Website Icons -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css"
+    />
+
+    <!-- Custom CSS -->
+    <!-- <link href="./css/style.css" rel="stylesheet" /> -->
+
+    <!-- JavaScript -->
+  </head>
+  <style>
+    /* Common CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Roboto", sans-serif;
+      font-size: 16px;
+      background: #efefef;
+      line-height: 26px;
+      padding-top: 60px;
+    }
+
+    .container {
+      padding: 0 15px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .ovarlay {
+      background: rgba(255, 255, 255, 0.9);
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    input,
+    textarea {
+      border: none;
+      padding: 5px;
+      font-size: 16px;
+      width: 100%;
+      outline: 1px solid rgb(210, 210, 251);
+      /* outline: none; */
+    }
+
+    button,
+    .btn {
+      padding: 6px 15px;
+      font-size: 14px;
+      display: inline-block;
+      width: auto;
+    }
+
+    .btn-primary {
+      background: rgb(80, 80, 244);
+      color: #fff;
+    }
+
+    /* Header CSS */
+    .app-header {
+      background: #fff;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 99999;
+      /* overflow: hidden; */
+    }
+
+    .app-header .container {
+      height: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sub-menu-items,
+    .menu-items {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      background: #fff;
+    }
+
+    .sub-menu-items li a,
+    .menu-items li a {
+      color: #000000;
+      text-decoration: none;
+      padding: 5px 15px;
+      display: inline-block;
+    }
+
+    .sub-menu-items li a:hover,
+    .menu-items li a:hover {
+      color: red;
+    }
+
+    .sub-menu-items {
+      flex-direction: column;
+      padding: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .menu-items li {
+      position: relative;
+    }
+
+    .menu-items li:hover ul {
+      display: flex;
+      position: absolute;
+      top: 28px;
+      left: 0;
+    }
+
+    .brand-name {
+      padding-left: 15px;
+    }
+
+    /* Main Area CSS */
+    /* .main-content { 
+    padding-top: 30px;
+} */
+
+    /* Form CSS */
+    .contact-form {
+      padding: 30px;
+      background: #fff;
+      margin: 0 auto;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+
+    .contact-form label {
+      margin-bottom: 3px;
+      display: inline-block;
+    }
+
+    .contact-form h4 {
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .form-control {
+      margin-bottom: 15px;
+    }
+
+    /* Footer CSS */
+    .app-footer {
+      background: #fff;
+      padding-top: 50px;
+    }
+
+    .footer-top-part {
+      display: flex;
+      gap: 20px;
+      padding-bottom: 20px;
+    }
+
+    .footer-col {
+      width: 20%;
+    }
+
+    .footer-col1 {
+      width: 30%;
+    }
+
+    .footer-top-part h4 {
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .footer-bottom-part {
+      /* text-align: center; */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-top: 1px solid #ccc;
+    }
+
+    .footer-links a {
+      display: block;
+      text-decoration: none;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .footer-links a:hover {
+      color: red;
+      padding-left: 15px;
+      -webkit-transition: all 500ms ease-in-out;
+      -moz-transition: all 500ms ease-in-out;
+      -ms-transition: all 500ms ease-in-out;
+      -o-transition: all 500ms ease-in-out;
+      transition: all 500ms ease-in-out;
+    }
+
+    /* About Section CSS */
+    .about-section {
+      text-align: center;
+      padding: 50px 15px;
+      background: #ccc;
+      color: #fff;
+      min-height: calc(100vh - 60px);
+      background-image: linear-gradient(
+        to bottom,
+        #0e0e7b,
+        #00379d,
+        #005bbc,
+        #007ed7,
+        #09a2ee
+      );
+      display: flex;
+      align-items: center;
+    }
+
+    .about-section h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .about-section p {
+      margin-bottom: 15px;
+    }
+
+    /* Blog Section CSS */
+    .blog-section {
+      padding: 50px 15px;
+      background: #fff;
+    }
+
+    .blog-section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .three-col-grid {
+      display: flex;
+      gap: 20px;
+    }
+
+    .three-col-grid .col .card {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .three-col-grid .col .card h4,
+    .three-col-grid .col .card p {
+      margin-bottom: 10px;
+    }
+
+    /* Outline Gray */
+    /* .three-col-grid .col .card a {
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    color: #666;
+    font-size: 14px;
+} */
+
+    /* Outline Colored */
+    /* .three-col-grid .col .card a {
+    text-decoration: none;
+    border: 1px solid #0e0e7b;
+    border-radius: 4px;
+    padding: 5px 10px;
+    color: #0e0e7b;
+    font-size: 14px;
+} */
+
+    /* Filled Button */
+    /* .three-col-grid .col .card a {
+    text-decoration: none; 
+    background-color: #0e0e7b;
+    border-radius: 25px;
+    padding: 5px 14px;
+    color: #fff;
+    font-size: 14px;
+    background-image: linear-gradient(to right, #0e0e7b, #00379d, #005bbc, #007ed7, #09a2ee);
+} */
+
+    .three-col-grid .col .card a {
+      background-image: linear-gradient(
+        to right,
+        #02aab0 0%,
+        #00cdac 51%,
+        #02aab0 100%
+      );
+      padding: 5px 20px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: 0.5s;
+      background-size: 200% auto;
+      color: white;
+      box-shadow: 0 0 20px #eee;
+      border-radius: 10px;
+      display: inline-block;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .three-col-grid .col .card a:hover {
+      background-position: right center;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+      background: #fff;
+      color: #000000;
+      border-radius: 4px;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact-section {
+      padding: 0;
+      background: #e1e3ff;
+      line-height: 0;
+    }
+
+    .contact-section .container {
+      position: relative;
+      padding: 0;
+    }
+
+    .contact-form {
+      position: absolute;
+      right: 0;
+      top: 44px;
+      line-height: 28px;
+    }
+
+    .google-map {
+      width: 100%;
+      margin: 0;
+    }
+  </style>
+  <body>
+    <!-- App Header -->
+    <header class="app-header">
+      <div class="container">
+        <span class="brand-name">Company Name</span>
+        <nav>
+          <ul class="menu-items">
+            <li class="menu-item">
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#hero-section">About</a>
+              <!-- <ul class="sub-menu-items">
+                                    <li class="menu-item">
+                                        <a href="#">Company</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Director</a>
+                                    </li>
+                                </ul> -->
+            </li>
+            <li>
+              <a href="#blog-section">Blog</a>
+            </li>
+            <li>
+              <a href="#contact-section">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <main class="main-content">
+      <!-- About Section Start -->
+      <section id="hero-section" class="about-section">
+        <div class="container">
+          <h1>Hi There, This is Nidhi Rajawat</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam id
+            cumque ducimus sit, consequuntur harum incidunt nostrum at eius
+            soluta. Ea, vitae. Aspernatur repellat quos iure maxime assumenda
+            quisquam voluptatem.
+          </p>
+
+          <div class="social-icons">
+            <a title="Linkedin" href="https://www.linkedin.com/" target="_blank"
+              ><i class="ph-bold ph-linkedin-logo"></i
+            ></a>
+            <a title="Github" href="#"
+              ><i class="ph-bold ph-github-logo"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+      <!-- About Section End -->
+
+      <!-- Blog Section Start -->
+      <section id="blog-section" class="blog-section">
+        <div class="container">
+          <h2>Recent Blog Posts</h2>
+          <div class="three-col-grid">
+            <div class="col-1 col">
+              <div class="card">
+                <h4>Blog post heading</h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+                  id cumque ducimus sit..
+                </p>
+                <a href="#">Read more</a>
+              </div>
+            </div>
+            <div class="col-2 col">
+              <div class="card">
+                <h4>Blog post heading</h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+                  id cumque ducimus sit..
+                </p>
+                <a href="#">Read more</a>
+              </div>
+            </div>
+            <div class="col-3 col">
+              <div class="card">
+                <h4>Blog post heading</h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+                  id cumque ducimus sit..
+                </p>
+                <a href="#">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- About Section End -->
+
+      <!-- Contact Section Start -->
+      <section id="contact-section" class="contact-section">
+        <div class="container">
+          <!-- <h2>Contact Details</h2> -->
+          <form class="contact-form" action="/" method="get">
+            <h4>Contact Form</h4>
+            <div class="form-control">
+              <label>Name:</label>
+              <input
+                name="your_name"
+                type="text"
+                value=""
+                placeholder="Enter your name"
+              />
+            </div>
+            <div class="form-control">
+              <label>Email:</label>
+              <input
+                name="your_email"
+                type="email"
+                value=""
+                placeholder="Enter your email"
+              />
+            </div>
+            <div class="form-control">
+              <label>Message:</label>
+              <textarea
+                name="your_message"
+                placeholder="Enter your email"
+              ></textarea>
+            </div>
+            <div class="action-wr">
+              <input
+                class="btn btn-primary"
+                name="contact_submit"
+                type="submit"
+                value="Submit"
+              />
+            </div>
+          </form>
+        </div>
+
+        <iframe
+          class="google-map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.1270756870304!2d75.87821227508358!3d22.760664879358202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcde3d7e977b%3A0xbc37044b33073d67!2sPrecious%20Infosystem%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1725880536155!5m2!1sen!2sin"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
+      <!-- About Section End -->
+    </main>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+      <div class="container">
+        <div class="footer-top-part">
+          <div class="footer-col footer-col1">
+            <h4>Company Name</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+          </div>
+          <div class="footer-col footer-col2">
+            <h4>Company Name</h4>
+            <div class="footer-links">
+              <a href="#">Industries we serve</a>
+              <a href="#">Industries we serve</a>
+              <a href="#">Industries we serve</a>
+            </div>
+          </div>
+          <div class="footer-col footer-col3">
+            <h4>Company Name</h4>
+            <div class="footer-links">
+              <a href="#">Industries we serve</a>
+              <a href="#">Industries we serve</a>
+              <a href="#">Industries we serve</a>
+            </div>
+          </div>
+          <div class="footer-col footer-col4">
+            <h4>Company Name</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="footer-bottom-part">
+          <div class="footer-b-col1">
+            &copy; Copyright 2024. All rights reserved.
+          </div>
+          <div class="footer-b-col2">
+            Created By: <a href="#">XYZ Company</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
