@@ -1,414 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo-element</title>
-  </head>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Gill Sans Extrabold", sans-serif;
-    }
 
-    /* Navigation-bar */
-    .container {
-      padding: 0 15px;
-      max-width: 1140px;
-      margin: 0 auto;
-    }
-    .app-header {
-      background: #fff;
-      position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-    }
-    .app-header .container {
-      height: 60px;
-      justify-content: space-between;
-      display: flex;
-      align-items: center;
-    }
-    .sub-menu,
-    .menu-bar {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      background: #fff;
-    }
-    .sub-menu,
-    .menu-bar li a {
-      color: #000000;
-      text-decoration: none;
-      padding: 5px 15px;
-      display: inline-block;
-    }
-    .menu-bar li a {
-      color: #ff2c00;
-    }
-    .menu-bar li {
-      position: relative;
-    }
-    .sub-menu li a:hover,
-    .menu-bar li a:hover {
-      color: #ff2c00;
-    }
-    .menu-bar li:hover ul {
-      display: flex;
-      position: absolute;
-      top: 28px;
-      left: 0;
-    }
-    .sub-menu {
-      flex-direction: column;
-      padding: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      display: none;
-    }
-    .logo1 img {
-      max-width: 9%;
-      margin-top: 24px;
-    }
-    .first-section {
-      background-image: url("./assest/vivid-blurred-colorful-wallpaper-background.jpg");
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-    .second-section {
-      text-align: center;
-      margin-top: 100px;
-    }
-    .todoLists {
-      padding-top: 20px;
-    }
-    .todoLists li {
-      text-decoration: none;
-    }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo-element</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Gill Sans Extrabold", sans-serif;
+    box-sizing: border-box;
+  }
 
-    /* Main-Section */
-    .main-section {
-      position: relative;
-      z-index: -2;
-      padding: 100px 0 20px;
-      background: linear-gradient(
-        0deg,
+  /* Navigation-bar */
+  .container {
+    padding: 0 15px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .app-header {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .app-header .container {
+    height: 60px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+  }
+
+  .sub-menu,
+  .menu-bar {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    background: #fff;
+  }
+
+  .sub-menu,
+  .menu-bar li a {
+    color: #000000;
+    text-decoration: none;
+    padding: 5px 15px;
+    display: inline-block;
+  }
+
+  .menu-bar li a {
+    color: #ff2c00;
+  }
+
+  .menu-bar li {
+    position: relative;
+  }
+
+  .sub-menu li a:hover,
+  .menu-bar li a:hover {
+    color: #ff2c00;
+  }
+
+  .menu-bar li:hover ul {
+    display: flex;
+    position: absolute;
+    top: 28px;
+    left: 0;
+  }
+
+  .sub-menu {
+    flex-direction: column;
+    padding: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: none;
+  }
+
+  .logo1 img {
+    max-width: 9%;
+    margin-top: 24px;
+  }
+
+  .first-section {
+    background-image: url("./assest/vivid-blurred-colorful-wallpaper-background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .second-section {
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  .todoLists {
+    padding-top: 20px;
+  }
+
+  .todoLists li {
+    text-decoration: none;
+  }
+
+  /* Main-Section */
+  .main-section {
+    position: relative;
+    z-index: -2;
+    padding: 100px 0 20px;
+    background: linear-gradient(0deg,
         rgba(248, 253, 255, 0) 0%,
-        #ff2a000f 100%
-      );
-      margin-top: 24px;
-      height: 500px;
-    }
-    .main-section h1 {
-      color: #010d4c;
-      flex: 0 0 auto;
-      width: 58.3333333333%;
-    }
-    .main-section p {
-      color: #556f88;
-      flex: 0 0 auto;
-      width: 58.3333333333%;
-    }
-    img {
-      max-width: 100%;
-      display: block;
-    }
-    img,
-    svg {
-      vertical-align: middle;
-    }
-    .software {
-      float: left;
-    }
-    .images-section {
-      float: right;
-      position: absolute;
-      right: 5%;
-      top: 25%;
-      width: 36.4%;
-    }
-    .shape-one {
-      top: -5%;
-      right: 37%;
-      width: 24.7%;
-      z-index: 1;
-      animation: rotated 20s infinite linear;
-      position: absolute;
-      visibility: visible;
-      animation-duration: 2s;
-      animation-delay: 0.5s;
-      animation-name: nidhi;
-    }
-    .shape-two {
-      top: 27%;
-      left: 4%;
-      width: 4.6%;
-      z-index: 1;
-      position: absolute;
-    }
-    .shape-three {
-      top: 43%;
-      right: 1%;
-      width: 4.6%;
-      z-index: 1;
-      position: absolute;
-    }
-    .btn {
-      width: 16%;
-      padding: 17px;
-      background-color: #ff3d00;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 18px;
-      transition: background-color 0.3s;
-      margin-bottom: 10px;
-    }
-    img {
-      max-width: 100%;
-      display: block;
-    }
+        #ff2a000f 100%);
+    margin-top: 24px;
+    height: 500px;
+  }
 
-    /* footer-Section */
-    /* FOOTER */
-    .app-footer {
-      background-image: url("./assest/footerwave.png");
-      background-size: cover;
-      background-position: bottom;
-      background-color: #36373c;
-      padding-top: 50px;
-      /* margin-top: 30px; */
-    }
-    .footer-top-part {
-      width: 100%;
-      display: flex;
-      gap: 20px;
-      padding-bottom: 20px;
-    }
-    .footer-col1 {
-      width: 30%;
-    }
-    .footer-top-part h4 {
-      margin-bottom: 15px;
-      font-size: 20px;
-      color: rgb(207, 194, 194);
-    }
-    .footer-bottom-part {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 0;
-      border-top: 1px solid #ccc;
-      color: white;
-    }
-    .footer-links a {
-      display: block;
-      text-decoration: none;
-      margin-bottom: 15px;
-      color: white;
-    }
-    .footer-links a:hover {
-      color: #ff2c00;
-      padding-left: 15px;
-      -webkit-transition: all 500ms ease-in-out;
-      -moz-transition: all 500ms ease-in-out;
-      -ms-transition: all 500ms ease-in-out;
-      -o-transition: all 500ms ease-in-out;
-      transition: all 500ms ease-in-out;
-    }
-  </style>
-  <body>
-    <!-- Navigation Design -->
-    <header class="app-header">
-      <div class="container">
-        <h4 class="logo1">
-          <img src="./assest/preciousLogoSquare.png" alt="logo" />
-        </h4>
-        <nav>
-          <ul class="menu-bar">
-            <li><a href="#">Home</a></li>
-            <li>
-              <a href="/about.html">About</a>
-              <ul class="sub-menu">
-                <li><a href="#">Company</a></li>
-                <li><a href="#">Director</a></li>
-                <li><a href="#">Employee</a></li>
-              </ul>
-            </li>
-            <li><a href="/blog.html">Blog</a></li>
-            <li><a href="/contact.html">Contact</a></li>
-          </ul>
-        </nav>
+  .main-section h1 {
+    color: #010d4c;
+    flex: 0 0 auto;
+    width: 58.3333333333%;
+  }
+
+  .main-section p {
+    color: #556f88;
+    flex: 0 0 auto;
+    width: 58.3333333333%;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  img,
+  svg {
+    vertical-align: middle;
+  }
+
+  .software {
+    float: left;
+  }
+
+  .images-section {
+    float: right;
+    position: absolute;
+    right: 5%;
+    top: 25%;
+    width: 36.4%;
+  }
+
+  .shape-one {
+    top: -5%;
+    right: 37%;
+    width: 24.7%;
+    z-index: 1;
+    animation: rotated 20s infinite linear;
+    position: absolute;
+    visibility: visible;
+    animation-duration: 2s;
+    animation-delay: 0.5s;
+    animation-name: nidhi;
+  }
+
+  .shape-two {
+    top: 27%;
+    left: 4%;
+    width: 4.6%;
+    z-index: 1;
+    position: absolute;
+  }
+
+  .shape-three {
+    top: 43%;
+    right: 1%;
+    width: 4.6%;
+    z-index: 1;
+    position: absolute;
+  }
+
+  .btn {
+    width: 16%;
+    padding: 17px;
+    background-color: #ff3d00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* footer-Section */
+  /* FOOTER */
+  .app-footer {
+    background-image: url("./assest/footerwave.png");
+    background-size: cover;
+    background-position: bottom;
+    background-color: #36373c;
+    padding-top: 50px;
+    /* margin-top: 30px; */
+  }
+
+  .footer-top-part {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .footer-col1 {
+    width: 30%;
+  }
+
+  .footer-top-part h4 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: rgb(207, 194, 194);
+  }
+
+  .footer-bottom-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid #ccc;
+    color: white;
+  }
+
+  .footer-links a {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 15px;
+    color: white;
+  }
+
+  .footer-links a:hover {
+    color: #ff2c00;
+    padding-left: 15px;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+  }
+</style>
+
+<body>
+  <!-- Navigation Design -->
+  <header class="app-header">
+    <div class="container">
+      <h4 class="logo1">
+        <img src="./assest/preciousLogoSquare.png" alt="logo" />
+      </h4>
+      <nav>
+        <ul class="menu-bar">
+          <li><a href="#">Home</a></li>
+          <li>
+            <a href="/about.html">About</a>
+            <ul class="sub-menu">
+              <li><a href="#">Company</a></li>
+              <li><a href="#">Director</a></li>
+              <li><a href="#">Employee</a></li>
+            </ul>
+          </li>
+          <li><a href="/blog.html">Blog</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-section">
+    <div class="container">
+      <div class="software">
+        <h1>A Customer-Centric Approach To IT Solutions</h1>
+        <p>
+          By offering IT solutions that help organizations achieve agility and
+          responsiveness, we enable them to remain relevant in the digital
+          age..
+        </p>
+        <button class="btn">Contact Us</button>
       </div>
-    </header>
+      <div class="images-section">
+        <img src="./assest/ils_14.svg" alt="logo1" />
+        <!-- <img src="./assest/ils_14_1.svg" alt="logi2" class="shape-one" /> -->
+        <img src="./assest/ils_14_5.svg" alt="logo3" class="shape-two" />
+        <img src="./assest/ils_13_2 (1).svg" alt="logo4" class="shape-three" />
+      </div>
+    </div>
+  </main>
 
-    <main class="main-section">
-      <div class="container">
-        <div class="software">
-          <h1>A Customer-Centric Approach To IT Solutions</h1>
-          <p>
-            By offering IT solutions that help organizations achieve agility and
-            responsiveness, we enable them to remain relevant in the digital
-            age..
+  <!-- //contact-form -->
+  <section class="first-section">
+    <div class="second-section">
+      <h1>Contact-Form</h1>
+      <form action="">
+        <div>
+          <input type="text" name="" id="" class="todoValue" />
+          <button class="btn1">Add Todo</button>
+        </div>
+        <div class="todoLists"></div>
+      </form>
+    </div>
+  </section>
+  <!-- Footer-Section -->
+
+  <footer class="app-footer">
+    <div class="container">
+      <div class="footer-top-part">
+        <div class="footer-col footer-col1">
+          <h4>Precious Infosystem Pvt. Ltd.</h4>
+          <p style="color: white">
+            Our Commitment: Making Technology Work for You!
           </p>
-          <button class="btn">Contact Us</button>
         </div>
-        <div class="images-section">
-          <img src="./assest/ils_14.svg" alt="logo1" />
-          <!-- <img src="./assest/ils_14_1.svg" alt="logi2" class="shape-one" /> -->
-          <img src="./assest/ils_14_5.svg" alt="logo3" class="shape-two" />
-          <img
-            src="./assest/ils_13_2 (1).svg"
-            alt="logo4"
-            class="shape-three"
-          />
-        </div>
-      </div>
-    </main>
 
-    <!-- //contact-form -->
-    <section class="first-section">
-      <div class="second-section">
-        <h1>Contact-Form</h1>
-        <form action="">
-          <div>
-            <input type="text" name="" id="" class="todoValue" />
-            <button class="btn1">Add Todo</button>
-          </div>
-          <div class="todoLists"></div>
-        </form>
-      </div>
-    </section>
-    <!-- Footer-Section -->
-
-    <footer class="app-footer">
-      <div class="container">
-        <div class="footer-top-part">
-          <div class="footer-col footer-col1">
-            <h4>Precious Infosystem Pvt. Ltd.</h4>
-            <p style="color: white">
-              Our Commitment: Making Technology Work for You!
-            </p>
-          </div>
-
-          <!-- col-2 -->
-          <div class="footer-col footer-col1">
-            <h4>Quick Links</h4>
-            <div class="footer-links">
-              <a href="#">Industries we serve</a>
-              <a href="#">Press Release</a>
-              <a
-                href="file:///D:/precious%20Infosystem/MERN/Protofolio/index.html"
-                >Portfolio</a
-              >
-            </div>
-          </div>
-
-          <!-- column-3 -->
-          <div class="footer-col footer-col1">
-            <h4>Services</h4>
-            <div class="footer-links">
-              <a href="#">Website Development</a>
-              <a href="#">Mobile App Development</a>
-              <a href="#">Software Development</a>
-              <a href="#">Full Stack Development</a>
-              <a href="#">UI/UX Design</a>
-              <a href="#">Digital Marketing</a>
-            </div>
-          </div>
-
-          <!-- column-4 -->
-          <div class="footer-col footer-col1">
-            <h4>Contact Us</h4>
-            <p style="color: white">
-              01, MR 9, Scheme No 51, Sector B, Chandra Nagar, Indore, Madhya
-              Pradesh, India ( 452010 )
-            </p>
-            <h6 style="color: white">contact@preciousinfosystem.com</h6>
-            <h5 style="color: white">P: +91- 7880087103</h5>
+        <!-- col-2 -->
+        <div class="footer-col footer-col1">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="#">Industries we serve</a>
+            <a href="#">Press Release</a>
+            <a href="file:///D:/precious%20Infosystem/MERN/Protofolio/index.html">Portfolio</a>
           </div>
         </div>
 
-        <div class="footer-botton-part">
-          <div class="footer-b-col1" style="color: white; text-align: center">
-            &copy; Copyright 2024. All rights resvered.
+        <!-- column-3 -->
+        <div class="footer-col footer-col1">
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="#">Website Development</a>
+            <a href="#">Mobile App Development</a>
+            <a href="#">Software Development</a>
+            <a href="#">Full Stack Development</a>
+            <a href="#">UI/UX Design</a>
+            <a href="#">Digital Marketing</a>
           </div>
+        </div>
+
+        <!-- column-4 -->
+        <div class="footer-col footer-col1">
+          <h4>Contact Us</h4>
+          <p style="color: white">
+            01, MR 9, Scheme No 51, Sector B, Chandra Nagar, Indore, Madhya
+            Pradesh, India ( 452010 )
+          </p>
+          <h6 style="color: white">contact@preciousinfosystem.com</h6>
+          <h5 style="color: white">P: +91- 7880087103</h5>
         </div>
       </div>
-    </footer>
 
-    <!-- //Script-File.... -->
-    <script>
-      const todoLists = document.querySelector(".todoLists");
-      const todoValue = document.querySelector(".todoValue");
+      <div class="footer-botton-part">
+        <div class="footer-b-col1" style="color: white; text-align: center">
+          &copy; Copyright 2024. All rights resvered.
+        </div>
+      </div>
+    </div>
+  </footer>
 
-      //  get data in localStorage
-      let todoListValue = [];
+  <!-- //Script-File.... -->
+  <script>
+    const todoLists = document.querySelector(".todoLists");
+    const todoValue = document.querySelector(".todoValue");
 
-      const getTodoListFromLS = () => {
-        return JSON.parse(localStorage.getItem("todo")) || [];
-      };
-      //  show the data in localStorage
-      const addTodoListLocalStorage = (todo) => {
-        return localStorage.setItem("todo", JSON.stringify(todo));
-      };
+    //  get data in localStorage
+    let todoListValue = [];
 
-      const showTodoList = () => {
-        todoListValue = getTodoListFromLS();
-        todoListValue.forEach((curTodo) => {
-          const liElement = document.createElement("li");
-          liElement.innerHTML = curTodo;
-          todoLists.append(liElement);
-        });
-      };
+    const getTodoListFromLS = () => {
+      return JSON.parse(localStorage.getItem("todo")) || [];
+    };
+    //  show the data in localStorage
+    const addTodoListLocalStorage = (todo) => {
+      return localStorage.setItem("todo", JSON.stringify(todo));
+    };
 
-      const removeTodoList = (e) => {
-        console.log(e.target.textContent);
-        let currentTodo = e.target;
-        console.log(todoListValue);
-
-        updatedTodoList = todoListValue.filter(
-          (curTodoValue) => curTodoValue != currentTodo.textContent
-        );
-
-        addTodoListLocalStorage(todoListValue);
-        currentTodo.remove();
-        console.log(updatedTodoList);
-      };
-
-      const addTodoList = (e) => {
-        e.preventDefault();
-
-        todoListValue = getTodoListFromLS();
-        let newTodo = todoValue.value.trim();
-
-        console.log(newTodo);
-        todoValue.value = " ";
-
-        if (newTodo.length != 0 && !todoListValue.includes(newTodo)) {
-          // for romoving duplicate value
-          console.log(typeof todoListValue);
-          todoListValue.push(newTodo);
-          //   for unique value.....
-          todoListValue = [...new Set(todoListValue)];
-          //   addTodoListLocalStorage(todoListValue);
-
-          const liElement = document.createElement("li");
-          liElement.innerHTML = newTodo;
-          todoLists.append(liElement);
-        }
-      };
-      showTodoList();
-
-      document.querySelector(".btn").addEventListener("click", (e) => {
-        addTodoList(e);
+    const showTodoList = () => {
+      todoListValue = getTodoListFromLS();
+      todoListValue.forEach((curTodo) => {
+        const liElement = document.createElement("li");
+        liElement.innerHTML = curTodo;
+        todoLists.append(liElement);
       });
+    };
 
-      todoLists.addEventListener("click", (e) => removeTodoList(e));
-    </script>
-  </body>
+    const removeTodoList = (e) => {
+      console.log(e.target.textContent);
+      let currentTodo = e.target;
+      console.log(todoListValue);
+
+      updatedTodoList = todoListValue.filter(
+        (curTodoValue) => curTodoValue != currentTodo.textContent
+      );
+
+      addTodoListLocalStorage(todoListValue);
+      currentTodo.remove();
+      console.log(updatedTodoList);
+    };
+
+    const addTodoList = (e) => {
+      e.preventDefault();
+
+      todoListValue = getTodoListFromLS();
+      let newTodo = todoValue.value.trim();
+
+      console.log(newTodo);
+      todoValue.value = " ";
+
+      if (newTodo.length != 0 && !todoListValue.includes(newTodo)) {
+        // for romoving duplicate value
+        console.log(typeof todoListValue);
+        todoListValue.push(newTodo);
+        //   for unique value.....
+        todoListValue = [...new Set(todoListValue)];
+        //   addTodoListLocalStorage(todoListValue);
+
+        const liElement = document.createElement("li");
+        liElement.innerHTML = newTodo;
+        todoLists.append(liElement);
+      }
+    };
+    showTodoList();
+
+    document.querySelector(".btn").addEventListener("click", (e) => {
+      addTodoList(e);
+    });
+
+    todoLists.addEventListener("click", (e) => removeTodoList(e));
+  </script>
+</body>
+
 </html>
